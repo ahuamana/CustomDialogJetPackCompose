@@ -13,7 +13,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -103,7 +107,12 @@ fun CustomDialog(
         Box() {
             Card(modifier = Modifier
                 .padding(top = 60.dp, start = 20.dp, end = 20.dp, bottom = 20.dp)
-                .fillMaxWidth()) {
+                .fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Black
+                ),
+            ) {
                 Column(
                     modifier = Modifier
                         .padding(top = 60.dp)
@@ -116,11 +125,17 @@ fun CustomDialog(
                     )
                     Spacer(modifier = Modifier.padding(14.dp))
                     Text(
-                        text = "Your account has been created",
+                        text = "Your account has been created, you can now log in.",
                         fontWeight = FontWeight.Normal,
                     )
                     Spacer(modifier = Modifier.padding(14.dp))
-                    Button(onClick = { onDismissRequest() }) {
+                    Button(
+                        onClick = { onDismissRequest() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF1276C5),
+                            contentColor = Color.White
+                        )
+                    ) {
                         Text(text = "Regresar")
                     }
                     Spacer(modifier = Modifier.padding(14.dp))
